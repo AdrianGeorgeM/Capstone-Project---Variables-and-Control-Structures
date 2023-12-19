@@ -1,3 +1,5 @@
+import math  # Importing the math library
+
 # User selection
 choice = input("Choose 'investment' or 'bond': ").lower()
 
@@ -11,7 +13,7 @@ if choice == "investment":
     if interest_type == "simple":
         total = amount * (1 + rate * years)
     else:  # Assuming compound interest
-        total = amount * ((1 + rate) ** years)
+        total = amount * math.pow((1 + rate), years)
 
     print(f"Total amount after {years} years: {total}")
 
@@ -21,7 +23,7 @@ elif choice == "bond":
     interest_rate = float(input("Annual interest rate (as a percentage): ")) / 100 / 12
     months = int(input("Repayment period in months: "))
 
-    repayment = house_value * interest_rate / (1 - (1 + interest_rate) ** -months)
+    repayment = house_value * interest_rate / (1 - math.pow((1 + interest_rate), -months))
     print(f"Monthly repayment: {repayment}")
 
 else:
